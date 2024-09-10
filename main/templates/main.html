@@ -9,10 +9,10 @@
 <p>{{ NPM }}<p>
 
     <ul>
-        {% for Product in Products %}
+        {% for product in products %}
         <li>
-            <h2>{{ Product.name }} - ${{ Product.price }}</h2>
-            <p>{{ Product.description }}</p>
+            <h2>{{ product.name }} - ${{ product.price }}</h2>
+            <p>{{ product.description }}</p>
             {% endfor %}
         </li>
     </ul>

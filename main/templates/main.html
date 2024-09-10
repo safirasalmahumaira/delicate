@@ -1,13 +1,16 @@
-<h1>delicate</h1>
-
-
-<h5>Name: </h5>
-<p>{{ Name }}<p>
-<h5>Class: </h5>
-<p>{{ Class }}<p>
-<h5>NPM: </h5>
-<p>{{ NPM }}<p>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicate</title>
+</head>
+<body>
+    <h1>Delicate</h1>
+    <p><strong>Name:</strong> {{ name }}</p>
+    <p><strong>Class:</strong> {{ class }}</p>
+    <p><strong>NPM:</strong> {{ NPM }}</p>
+    
     <ul>
         {% for product in products %}
         <li>
@@ -17,4 +20,5 @@
         </li>
         {% endfor %}
     </ul>
-    
+</body>
+</html>

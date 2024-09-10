@@ -41,7 +41,7 @@ Django dipilih sebagai framework untuk pembelajaran karena memiliki struktur yan
 Model di Django disebut sebagai **Object-Relational Mapping (ORM)** karena memungkinkan pengembang untuk berinteraksi dengan database menggunakan objek Python. Dengan ORM, kita tidak perlu menulis query SQL secara langsung, melainkan menggunakan metode yang lebih sederhana dan aman dalam bentuk query berbasis objek.
 
 ## Author
-Nama: Safira Salma Humaira 
-NPM: 2306245850 
+Nama: Safira Salma Humaira -
+NPM: 2306245850 -
 Kelas: PBP F
 

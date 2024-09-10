@@ -1,68 +1,47 @@
-# Aplikasi E-Commerce Delicate
+# Delicate - Skincare and Make Up
 
-Delicate adalah aplikasi E-Commerce yang dirancang untuk memfasilitasi penjualan produk secara online dengan fitur yang mudah digunakan. Aplikasi ini mengimplementasikan arsitektur Model-View-Template (MVT) Django untuk menyediakan platform yang efisien dan responsif.
+Ini adalah repository untuk **Delicate**, sebuah aplikasi e-commerce yang dikembangkan untuk **Tugas 2: Pemrograman Berbasis Platform**.
 
-## Tautan Aplikasi
+## Deskripsi Proyek
+Aplikasi Delicate adalah aplikasi e-commerce yang menjual skincare dan makeup dan memungkinkan pengguna untuk melihat daftar produk dengan atribut **nama**, **harga**, dan **deskripsi**. Proyek ini dibuat dengan menggunakan framework Django dan mengimplementasikan konsep **Model-View-Template (MVT)**.
 
-Aplikasi telah dideploy di PythonAnywhere dan dapat diakses melalui tautan berikut:
-[Delicate di PythonAnywhere](http://delicate.pythonanywhere.com)
+## Link Aplikasi
+Aplikasi yang sudah dideploy dapat diakses melalui tautan berikut:
+[Delicate - Aplikasi E-Commerce](https://safira-salma-delicate.pbp.cs.ui.ac.id/)
 
-## Daftar Periksa Implementasi
+## Implementasi Langkah-demi-Langkah
+Berikut adalah langkah-langkah yang saya lakukan untuk menyelesaikan checklist tugas ini:
 
-### 1. Implementasi Langkah demi Langkah
+1. **Membuat proyek Django baru:**  Pertama memulai dengan membuat proyek baru menggunakan perintah `django-admin startproject delicate`.
+2. **Membuat aplikasi dengan nama `main`:** Lalu, membuat aplikasi bernama `main` dengan perintah `python manage.py startapp main`.
+3. **Melakukan routing pada proyek:** Routing dilakukan dengan menambahkan URL aplikasi `main` ke dalam `urls.py` proyek utama, agar aplikasi dapat diakses.
+4. **Membuat model `Product`:** Membuat model `Product` pada `models.py` dengan atribut wajib `name` (CharField), `price` (IntegerField), dan `description` (TextField).
+5. **Membuat fungsi pada `views.py`:** Saya menambahkan fungsi yang menampilkan nama aplikasi, serta nama dan kelas saya, kemudian mengembalikannya ke template HTML.
+6. **Membuat routing pada `urls.py` di aplikasi `main`:** Routing ditambahkan pada `urls.py` di aplikasi `main` untuk memetakan fungsi yang telah dibuat di `views.py`.
+7. **Deployment ke PWS:** Aplikasi di deploy ke PWS agar bisa diakses secara online.
 
-- **Membuat Proyek Django Baru**:
-  - Memulai dengan membuat lingkungan virtual dan menginstal Django.
-  - Menggunakan `django-admin startproject delicate` untuk menyiapkan struktur proyek dasar.
+## Bagan Request-Response Django
+Berikut adalah bagan alur request client ke web aplikasi berbasis Django dan responnya:
 
-- **Membuat Aplikasi `main`**:
-  - Membuat aplikasi menggunakan `python manage.py startapp main`, yang menangani logika bisnis khusus untuk E-Commerce.
+![Diagram](image/diagram.png)
 
-- **Model**:
-  - Mendefinisikan model `Product` di `models.py` dengan field `name`, `price`, dan `description`.
 
-- **Tampilan (Views)**:
-  - Membuat fungsi tampilan di `views.py` untuk mengambil data dari model dan meneruskannya ke template.
+- **urls.py**: Menerima request dari client dan memetakan ke fungsi yang sesuai di `views.py`.
+- **views.py**: Mengambil data dari `models.py` jika diperlukan, lalu merender template HTML untuk dikirim ke client.
+- **models.py**: Mengelola data yang diambil dari database menggunakan ORM Django.
+- **templates**: File HTML yang dirender oleh `views.py` untuk ditampilkan kepada pengguna.
 
-- **Template**:
-  - Membuat file HTML untuk menampilkan data produk dan informasi aplikasi.
+## Fungsi Git dalam Pengembangan Perangkat Lunak
+Git berfungsi sebagai sistem kontrol versi yang memungkinkan pengembang melacak perubahan kode, berkolaborasi dengan tim, dan kembali ke versi kode sebelumnya jika terjadi kesalahan. Dengan Git, pengembang juga bisa bekerja secara paralel melalui branching dan merging.
 
-- **Routing**:
-  - Menyiapkan URL di `urls.py` untuk merutekan permintaan ke fungsi tampilan yang sesuai.
+## Mengapa Django Digunakan dalam Pembelajaran?
+Django dipilih sebagai framework untuk pembelajaran karena memiliki struktur yang jelas (Model-View-Template) dan dilengkapi dengan banyak fitur bawaan yang mempermudah pengembangan aplikasi. Django juga memiliki dokumentasi yang baik dan komunitas yang besar, sehingga cocok untuk pemula.
 
-- **Deployment**:
-  - Mendeploy aplikasi ke PythonAnywhere, memastikan semua pengaturan produksi aman dan benar.
+## Mengapa Model di Django Disebut ORM?
+Model di Django disebut sebagai **Object-Relational Mapping (ORM)** karena memungkinkan pengembang untuk berinteraksi dengan database menggunakan objek Python. Dengan ORM, kita tidak perlu menulis query SQL secara langsung, melainkan menggunakan metode yang lebih sederhana dan aman dalam bentuk query berbasis objek.
 
-### 2. Diagram Alur Permintaan dan Respon
+## Author
+Nama: Safira Salma Humaira 
+NPM: 2306245850 
+Kelas: PBP F
 
-![Diagram Alur Permintaan Respon Django](http://example.com/diagram.png)
-
-Diagram ini mengilustrasikan bagaimana permintaan klien diproses melalui Django:
-- **urls.py** merutekan permintaan ke fungsi tampilan yang sesuai di **views.py**.
-- **views.py** berinteraksi dengan **models.py** untuk mengambil atau menyimpan data ke database.
-- Data yang diambil digunakan untuk mengisi konten di **file HTML**, yang kemudian dikirim kembali sebagai respon ke klien.
-
-### 3. Peran Git dalam Pengembangan Perangkat Lunak
-
-Git adalah sistem kontrol versi yang sangat penting untuk:
-- Melacak perubahan dalam kode sumber.
-- Memungkinkan kolaborasi yang efisien antar pengembang.
-- Mengelola berbagai versi dan cabang kode tanpa konflik.
-
-### 4. Mengapa Django adalah Framework Pembelajaran yang Unggul
-
-Django adalah pilihan populer untuk pembelajaran karena:
-- **Arsitektur yang jelas (MVT)** yang membantu dalam memahami konsep pengembangan web.
-- **Dokumentasi yang luas dan komunitas yang besar** menyediakan banyak sumber daya belajar.
-- **Fitur 'batteries included'** mempercepat proses pengembangan dengan menyediakan komponen umum.
-
-### 5. Model Django sebagai ORM
-
-Model Django bertindak sebagai ORM (Object-Relational Mapping) yang:
-- Memungkinkan tabel database direpresentasikan sebagai kelas Python.
-- Memfasilitasi interaksi dengan database menggunakan sintaks Python alih-alih SQL mentah.
-- Menyederhanakan manipulasi data database dengan metode dan atribut Python.
-
----
-
-Gantilah placeholder seperti tautan diagram dan deskripsi sesuai dengan spesifikasi proyek Anda. Juga, pastikan semua instruksi dan penjelasan konsisten dengan apa yang telah Anda implementasikan dalam proyek Anda.

@@ -5,7 +5,7 @@ Ini merupakan repository **Delicate**, sebuah aplikasi e-commerce yang dikembang
 [Tugas 2](#tugas-2)
 [Tugas 3](#tugas-3)
 
-# TUGAS 2
+## TUGAS 2
 ## Deskripsi Proyek
 Aplikasi Delicate adalah aplikasi e-commerce yang menjual skincare dan makeup dan memungkinkan pengguna untuk melihat daftar produk dengan atribut **nama**, **harga**, dan **deskripsi**. Proyek ini dibuat dengan menggunakan framework Django dan mengimplementasikan konsep **Model-View-Template (MVT)**.
 
@@ -47,7 +47,7 @@ Model di Django disebut sebagai **Object-Relational Mapping (ORM)** karena memun
 
 
 
-# TUGAS 3
+## TUGAS 3
 ### 1. Mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?
    Data delivery penting karena memungkinkan pertukaran informasi antara klien dan server. Ini membantu platform menjadi dinamis dengan menyediakan informasi real-time, mengelola permintaan pengguna, dan memberikan respons yang diperlukan. Tanpa data delivery, platform tidak bisa mengelola interaksi antara pengguna dan server secara efisien, dan tidak dapat berfungsi secara penuh.
 
@@ -67,6 +67,12 @@ Model di Django disebut sebagai **Object-Relational Mapping (ORM)** karena memun
    - Buat file HTML baru untuk form, tambahkan `{% csrf_token %}` dan tombol submit.
    - Buat 4 fungsi di `views.py` untuk menampilkan data dalam format **JSON** dan **XML**.
    - Tambahkan routing di `urls.py` untuk mengakses form, serta melihat data dalam format **JSON** dan **XML**.
+
+##Screenshot Postman
+![Postman JSON](imagetugas3/Screenshot%20(829).png)
+![Postman JSON ID](imagetugas3/Screenshot%20(830).png)
+![Postman XML](imagetugas3/Screenshot%20(831).png)
+![Postman XML ID](imagetugas3/Screenshot%20(832).png)
 
  
 ## Author

@@ -1,6 +1,11 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.core import serializers
+from django.shortcuts import render, redirect
+from main.forms import ItemForm
+from main.models import Item
 
 def show_main(request):
+    item_entries = Item.objects.all()
     context = {
         'name': 'Safira Salma Humaira',  # Key is 'name'
         'class': 'PBP F',                # Key is 'class'
@@ -16,6 +21,31 @@ def show_main(request):
                 'Price': '150.000',
                 'Description': 'Our facial wash is specially formulated to combat excess oil and shine. It gently cleanses pores, removing impurities while preserving the skin’s natural moisture barrier.'
             }
-        ]
+        ],
+        'item_entries': item_entries
     }
     return render(request, 'main.html', context)
+
+def create_item_entry(request):
+    form = ItemForm(request.POST or None)
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return redirect('main:show_main')
+    context = {'form': form}
+    return render(request, "create_item_entry.html", context)
+
+def show_xml(request):
+    data = Item.objects.all()
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+def show_json(request):
+    data = Item.objects.all()
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def show_xml_by_id(request, item_id):
+    data = Item.objects.filter(pk=item_id)
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+def show_json_by_id(request, item_id):
+    data = Item.objects.filter(pk=item_id)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")

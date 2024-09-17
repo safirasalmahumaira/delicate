@@ -1,24 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delicate</title>
-</head>
-<body>
-    <h1>Delicate</h1>
-    <p><strong>Name:</strong> {{ name }}</p>
-    <p><strong>Class:</strong> {{ class }}</p>
-    <p><strong>NPM:</strong> {{ NPM }}</p>
-    
-    <ul>
-        {% for product in products %}
-        <li>
-            <strong>Name:</strong> {{ product.Name }}<br>
-            <strong>Price:</strong> {{ product.Price }}<br>
-            <strong>Description:</strong> {{ product.Description }}<br>
-        </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Delicate</h1>
+<p><strong>Name:</strong> {{ name }}</p>
+<p><strong>Class:</strong> {{ class }}</p>
+<p><strong>NPM:</strong> {{ NPM }}</p>
+
+<ul>
+    {% for product in products %}
+    <li>
+        <strong>Name:</strong> {{ product.Name }}<br>
+        <strong>Price:</strong> {{ product.Price }}<br>
+        <strong>Description:</strong> {{ product.Description }}<br>
+    </li>
+    {% endfor %}
+</ul>
+
+{% if not item_entries %}
+<p>Belum ada data item yang tersedia.</p>
+{% else %}
+<table>
+  <tr>
+    <th>Item Name</th>
+    <th>Price</th>
+    <th>Description</th>
+    <th>Release Date</th>
+  </tr>
+
+  {% comment %} Berikut cara memperlihatkan data item di bawah baris ini {% endcomment %}
+  {% for item_entry in item_entries %}
+  <tr>
+    <td>{{ item_entry.name }}</td>
+    <td>{{ item_entry.price }}</td>
+    <td>{{ item_entry.description }}</td>
+    <td>{{ item_entry.release }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+
+<br />
+
+<a href="{% url 'main:create_item_entry' %}">
+  <button>Add New Item</button>
+</a>
+{% endblock content %}

@@ -3,7 +3,10 @@
 Ini merupakan repository **Delicate**, sebuah aplikasi e-commerce yang dikembangkan untuk **Tugas Pemrograman Berbasis Platform**.
 
 [Tugas 2](#tugas-2)
+
 [Tugas 3](#tugas-3)
+
+[Tugas 4](#tugas-4)
 
 ## TUGAS 2
 ## Deskripsi Proyek
@@ -75,6 +78,52 @@ Model di Django disebut sebagai **Object-Relational Mapping (ORM)** karena memun
 ![Postman XML ID](imagetugas3/Screenshot%20(832).png)
 
  
+
+
+### TUGAS 4
+### 1. Apa perbedaan antara HttpResponseRedirect() dan redirect()?
+- HttpResponseRedirect() adalah class bawaan Django yang mengirimkan respons HTTP dengan kode status 302 untuk melakukan redirect. Kode ini membutuhkan URL lengkap yang harus diberikan sebagai argumen.
+
+- redirect() adalah shortcut function yang mempermudah proses redirect dengan cara yang lebih fleksibel. Django akan secara otomatis menentukan URL tujuan, baik dari nama URL (seperti yang didefinisikan di urlpatterns), objek, atau model. Ini membuat kode lebih mudah dibaca dan di-maintain.
+
+### 2. Jelaskan cara kerja penghubungan model Product dengan User!
+Penghubungan antara model Item dan User dilakukan melalui relasi ForeignKey. Setiap Item terhubung dengan satu User, yang berarti satu pengguna bisa memiliki banyak Item (one-to-many). Relasi ini didefinisikan dengan menggunakan atribut ForeignKey di model Item, di mana User menjadi referensi. Jika pengguna dihapus, maka semua Item yang dimilikinya akan ikut dihapus karena pengaturan on_delete=models.CASCADE.
+
+### 3. Apa perbedaan antara authentication dan authorization, apakah yang dilakukan saat pengguna login? Jelaskan bagaimana Django mengimplementasikan kedua konsep tersebut.
+Authentication adalah proses untuk memverifikasi identitas pengguna, yaitu memastikan bahwa pengguna yang login adalah benar-benar pengguna yang sah. Di Django, ini dilakukan dengan memvalidasi username dan password pengguna.
+
+Authorization adalah proses untuk menentukan hak akses pengguna terhadap sumber daya tertentu, seperti akses ke halaman atau fitur tertentu di aplikasi. Setelah pengguna login, Django menggunakan authorization untuk memutuskan apakah pengguna tersebut berhak mengakses bagian tertentu.
+
+Saat pengguna login:
+1. Django memverifikasi identitas pengguna dengan mencocokkan username dan password.
+2. Jika cocok, Django mencatat pengguna sebagai authenticated dan menyimpan informasi ini dalam session.
+3. Authorization digunakan untuk menentukan akses apa saja yang dapat dilakukan oleh pengguna yang sudah login.
+
+### 4. Bagaimana Django mengingat pengguna yang telah login? Jelaskan kegunaan lain dari cookies dan apakah semua cookies aman digunakan?
+Django mengingat pengguna yang telah login dengan menggunakan session, yang diidentifikasi oleh session ID yang disimpan di dalam cookie pada browser pengguna. Setiap kali pengguna mengunjungi aplikasi, browser mengirimkan cookie dengan session ID ini ke server, dan server bisa mengenali pengguna berdasarkan session tersebut.
+
+Kegunaan lain dari cookies termasuk:
+- Menyimpan preferensi pengguna, seperti bahasa yang dipilih atau item yang terakhir dilihat.
+- Melacak aktivitas pengguna di situs web (misalnya, untuk analitik).
+
+Namun, tidak semua cookies aman. Cookies bisa disalahgunakan oleh serangan seperti cross-site scripting (XSS). Django menyediakan pengaturan keamanan seperti HttpOnly untuk mencegah JavaScript mengakses cookie, dan Secure agar cookie hanya dikirimkan melalui koneksi HTTPS.
+
+### 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+1. Membuat Fungsi Registrasi, Login, dan Logout:
+Saya menggunakan UserCreationForm untuk registrasi, dan AuthenticationForm untuk login. Setelah pengguna berhasil login, session dibuat untuk pengguna tersebut. Fungsi logout menghapus session dan cookies terkait.
+
+2. Membuat Dummy Data untuk Setiap Pengguna:
+Saya membuat dua akun pengguna dan tiga item skincare dummy untuk masing-masing pengguna menggunakan model Item, yang dihubungkan ke pengguna melalui relasi ForeignKey.
+
+3. Menghubungkan Model Item dengan User:
+Di model Item, saya menambahkan atribut owner dengan tipe ForeignKey yang merujuk ke model User, memastikan setiap item terkait dengan pengguna yang memilikinya.
+
+4. Menampilkan Username dan Menggunakan Cookie:
+Saya menampilkan username pengguna yang login di halaman utama menggunakan request.user.username dan mencatat waktu login terakhir menggunakan cookie bernama last_login. Cookie ini dihapus saat pengguna logout.
+
+5. Menyimpan dan Memastikan Push ke GitHub:
+Setelah semuanya berfungsi dengan baik, saya memastikan semua perubahan di-commit dan di-push ke GitHub sesuai dengan checklist.
+
 ## Author
 Nama: Safira Salma Humaira -
 NPM: 2306245850 -

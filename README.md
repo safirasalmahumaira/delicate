@@ -115,8 +115,12 @@ Saya menggunakan UserCreationForm untuk registrasi, dan AuthenticationForm untuk
 2. Membuat Dummy Data untuk Setiap Pengguna:
 Saya membuat dua akun pengguna dan tiga item skincare dummy untuk masing-masing pengguna menggunakan model Item, yang dihubungkan ke pengguna melalui relasi ForeignKey.
 
+##Screenshot User Page
+![USER 1](imagetugas4/user1.png)
+![USER 2](imagetugas4/user2.png)
+
 3. Menghubungkan Model Item dengan User:
-Di model Item, saya menambahkan atribut owner dengan tipe ForeignKey yang merujuk ke model User, memastikan setiap item terkait dengan pengguna yang memilikinya.
+Di model Item, saya menambahkan atribut user dengan tipe ForeignKey yang merujuk ke model User, memastikan setiap item terkait dengan pengguna yang memilikinya.
 
 4. Menampilkan Username dan Menggunakan Cookie:
 Saya menampilkan username pengguna yang login di halaman utama menggunakan request.user.username dan mencatat waktu login terakhir menggunakan cookie bernama last_login. Cookie ini dihapus saat pengguna logout.

@@ -1,51 +1,165 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<h1>Delicate</h1>
-<p><strong>Name:</strong> {{ name }}</p>
-<p><strong>Class:</strong> {{ class }}</p>
-<p><strong>NPM:</strong> {{ NPM }}</p>
+{% include 'navbar.html' %}
 
-<ul>
-    {% for product in products %}
-    <li>
-        <strong>Name:</strong> {{ product.Name }}<br>
-        <strong>Price:</strong> {{ product.Price }}<br>
-        <strong>Description:</strong> {{ product.Description }}<br>
-    </li>
+<style>
+  body {
+      background-color: white;
+  }
+  /* Top part of the card with light pink background and product name for catalog */
+  .card-top {
+      background-color: #FF1A9C;
+      padding: 8px 16px;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+  }
+  /* Product title with custom background and alignment for catalog */
+  .product-title {
+      background-color: #B12051;
+      color: white;
+      font-weight: bold;
+      padding: 10px;
+      text-align: center;
+      border-radius: 8px;
+  }
+  /* Adjusted product-title-price class for the price to display on a new line */
+  .product-title-price {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.875rem; /* Optional: adjust the font size if needed */
+  }
+  /* Bottom part of the card for the order section */
+  .card-bottom {
+      background-color: #ffb3de;
+      color: black;
+      padding: 16px;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+  }
+  /* Add new item button styles */
+  .add-new-item-btn {
+      background-color: #f7838d;
+      color: white;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 12px 24px;
+      border-radius: 8px;
+  }
+  /* Last login text */
+  .last-login {
+      font-weight: bold;
+      color: #FF1A9C;
+  }
+  /* Title and subtitle styles */
+  .title {
+      color: #FF1A9C;
+  }
+  .subtitle {
+      color: #FF1A9C;
+  }
+  /* Custom style for BEST SELLER OF THE MONTH badge */
+  .best-seller-badge {
+      background-color: #FF1A9C;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 0.75rem;
+  }
+</style>
+
+<div class="container mx-auto px-4 py-8 mt-16 max-w-7xl">
+  <div class="flex justify-start items-center">
+    <h1 class="title text-5xl italic font-bold mb-4">delicate</h1>
+    <p class="subtitle text-lg font-bold ml-2">Cherish your delicate skin with love.</p>
+  </div>
+
+  <!-- Product image section -->
+  <div class="flex justify-center items-center space-x-10 mb-6">
+    <div>
+      <img src="{% static 'css/image/serum.jpeg' %}" class="rounded-lg shadow-lg h-72 object-cover" alt="Serum">
+      <a href="#" class="product-title block mt-4">Serum
+        <span class="product-title-price">Rp250.000,00</span>
+      </a>
+    </div>
+
+    <div>
+      <img src="{% static 'css/image/face_wash.jpeg' %}" class="rounded-lg shadow-lg h-72 object-cover" alt="Facial Wash">
+      <a href="#" class="product-title block mt-4">Facial Wash
+        <span class="product-title-price">Rp200.000,00</span>
+      </a>
+    </div>
+
+    <div>
+      <img src="{% static 'css/image/moisturizer.jpeg' %}" class="rounded-lg shadow-lg h-72 object-cover" alt="Moisturizer">
+      <a href="#" class="product-title block mt-4">Moisturizer
+        <span class="product-title-price">Rp250.000,00</span>
+      </a>
+    </div>
+
+    <div class="relative">
+      <img src="{% static 'css/image/liptint.jpeg' %}" class="rounded-lg shadow-lg h-72 object-cover" alt="Lip Tint">
+      <div class="best-seller-badge">BEST SELLER OF THE MONTH!</div>
+      <a href="#" class="product-title block mt-4">Lip Tint
+        <span class="product-title-price">Rp400.000,00</span>
+      </a>
+    </div>
+
+    <div>
+      <img src="{% static 'css/image/blush.jpeg' %}" class="rounded-lg shadow-lg h-72 object-cover" alt="Blush">
+      <a href="#" class="product-title block mt-4">Blush
+        <span class="product-title-price">Rp400.000,00</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Product cards section (the two-tone card layout) -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+    {% for item_entry in item_entries %}
+    <div class="border border-gray-300 rounded-lg shadow-md">
+      <!-- Upper section without background, name is styled for order section -->
+      <div class="card-top">
+        <h2 class="product-title-left text-white font-bold">{{ item_entry.name }}</h2>
+      </div>
+      
+      <!-- Lower section with custom background and description -->
+      <div class="card-bottom">
+        <p><strong>Price:</strong> {{ item_entry.price }}</p>
+        <p><strong>Description:</strong> {{ item_entry.description }}</p>
+        <div class="flex justify-between mt-4">
+          <a href="{% url 'main:edit_item' item_entry.pk %}">
+            <button class="bg-[#C5C6C7] text-white py-1 px-3 rounded hover:bg-[#93c5db]">Edit</button>
+          </a>
+          <a href="{% url 'main:delete_item' item_entry.pk %}">
+            <button class="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600">Delete</button>
+          </a>
+        </div>
+      </div>
+    </div>
     {% endfor %}
-</ul>
+  </div>
 
-{% if not item_entries %}
-<p>Belum ada data item yang tersedia.</p>
-{% else %}
-<table>
-  <tr>
-    <th>Item Name</th>
-    <th>Price</th>
-    <th>Description</th>
-  </tr>
+  {% if not item_entries %}
+  <div class="text-center font-bold mt-6">
+    <p>No order yet.</p>
+  </div>
+  {% endif %}
 
-  {% comment %} Berikut cara memperlihatkan data item di bawah baris ini {% endcomment %}
-  {% for item_entry in item_entries %}
-  <tr>
-    <td>{{ item_entry.name }}</td>
-    <td>{{ item_entry.price }}</td>
-    <td>{{ item_entry.description }}</td>
-  </tr>
-  {% endfor %}
-</table>
-{% endif %}
+  <!-- Add new item button -->
+  <div class="mt-8">
+    <a href="{% url 'main:create_item_entry' %}">
+      <button class="add-new-item-btn text-white rounded-full">ADD NEW ITEM</button>
+    </a>
+  </div>
 
-<br />
-
-<a href="{% url 'main:create_item_entry' %}">
-  <button>Add New Item</button>
-</a>
-
-<a href="{% url 'main:logout' %}">
-  <button>Logout</button>
-  <h5>Sesi terakhir login: {{last_login}}</h5>
-</a>
+  <!-- Last login information -->
+  <div class="text-left mt-8">
+    <h5 class="last-login">Last login: {{ last_login }}</h5>
+  </div>
+</div>
 
 {% endblock content %}

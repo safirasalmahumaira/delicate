@@ -1,6 +1,6 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.core import serializers
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from main.forms import ItemForm
 from main.models import Item
 from django.contrib.auth.forms import UserCreationForm
@@ -20,18 +20,6 @@ def show_main(request):
         'name': 'Safira Salma Humaira',  # Key is 'name'
         'class': 'PBP F',                # Key is 'class'
         'NPM': '2306245850',
-        'products': [
-            {
-                'Name': 'Moisturizer',
-                'Price': '250.000',
-                'Description': 'This lightweight moisturizer is specially formulated for oily skin. It helps to control excess sebum production without drying out your skin. The non-greasy formula provides hydration while maintaining a shine-free finish. Perfect for those seeking a balanced and healthy complexion.'
-            },
-            {
-                'Name': 'Facial Wash',
-                'Price': '150.000',
-                'Description': 'Our facial wash is specially formulated to combat excess oil and shine. It gently cleanses pores, removing impurities while preserving the skin’s natural moisture barrier.'
-            }
-        ],
         'item_entries': item_entries,
         'last_login': request.COOKIES['last_login'],
     }
@@ -96,3 +84,26 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
     return response
+
+def edit_item(request, id):
+    # Get item entry berdasarkan id
+    mood = Item.objects.get(pk = id)
+
+    # Set item entry sebagai instance dari form
+    form = ItemForm(request.POST or None, instance=mood)
+
+    if form.is_valid() and request.method == "POST":
+        # Simpan form dan kembali ke halaman awal
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_item.html", context)
+
+def delete_item(request, id):
+    # Get item berdasarkan id
+    item = Item.objects.get(pk = id)
+    # Hapus item
+    item.delete()
+    # Kembali ke halaman awal
+    return HttpResponseRedirect(reverse('main:show_main'))

@@ -6,28 +6,40 @@
 
 {% block content %}
 <div class="min-h-screen flex items-center justify-center bg-[#ffcddf] py-12 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-lg space-y-8">
+  <div class="max-w-md w-full space-y-8 form-style bg-white p-8 rounded-md shadow-lg">
     <div>
-      <h1 class="text-center text-4xl font-bold italic text-[#FF1A9C]">
-        delicate
-      </h1>
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-[#FF1A9C]">
+        Create your account
+      </h2>
     </div>
     <form class="mt-8 space-y-6" method="POST">
       {% csrf_token %}
       <input type="hidden" name="remember" value="true">
       <div class="rounded-md shadow-sm -space-y-px">
-        <div>
-          <label for="username" class="mb-2 font-semibold text-[#FF1A9C]">Username</label>
-          <input id="username" name="username" type="text" required class="appearance-none rounded relative block w-full px-3 py-2 bg-[#ffe6ee] placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Username">
-        </div>
-        <div>
-          <label for="password" class="mb-2 font-semibold text-[#FF1A9C]">Password</label>
-          <input id="password" name="password" type="password" required class="appearance-none rounded relative block w-full px-3 py-2 bg-[#ffe6ee] placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password">
-        </div>
-        <div>
-          <label for="password_confirmation" class="mb-2 font-semibold text-[#FF1A9C]">Password Confirmation</label>
-          <input id="password_confirmation" name="password_confirmation" type="password" required class="appearance-none rounded relative block w-full px-3 py-2 bg-[#ffe6ee] placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password Confirmation">
-        </div>
+        {% for field in form %}
+          <div class="{% if not forloop.first %}mt-4{% endif %}">
+            <label for="{{ field.id_for_label }}" class="mb-2 font-semibold text-[#FF1A9C]">
+              {{ field.label }}
+            </label>
+            <div class="relative">
+              <input type="{{ field.field.widget.input_type }}" name="{{ field.html_name }}" id="{{ field.id_for_label }}"
+                     class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md bg-[#ffe6ee] placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm" 
+                     placeholder="{{ field.label }}" required>
+              <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                {% if field.errors %}
+                  <svg class="h-5 w-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                  </svg>
+                {% endif %}
+              </div>
+            </div>
+            {% if field.errors %}
+              {% for error in field.errors %}
+                <p class="mt-1 text-sm text-red-600">{{ error }}</p>
+              {% endfor %}
+            {% endif %}
+          </div>
+        {% endfor %}
       </div>
 
       <div>

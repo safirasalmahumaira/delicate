@@ -194,7 +194,7 @@
             <button class="bg-[#C5C6C7] text-white py-1 px-3 rounded hover:bg-[#93c5db]">Edit</button>
           </a>
           <a href="{% url 'main:delete_item' item_entry.pk %}">
-            <button class="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600">Delete</button>
+            <button class="bg-[#B42857] text-white py-1 px-3 rounded hover:bg-red-600">Delete</button>
           </a>
         </div>
       </div>
@@ -204,6 +204,7 @@
 
   {% if not item_entries %}
   <div class="text-center font-bold mt-6">
+    <img src="{% static 'css/image/none.jpeg' %}" class="product-img h-72 object-cover mx-auto" alt="none">
     <p>No order yet.</p>
   </div>
   {% endif %}

@@ -48,6 +48,7 @@ Model di Django disebut sebagai **Object-Relational Mapping (ORM)** karena memun
 
 <details>
   <summary>Tugas 3</summary>
+
 ### 1. Mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?
    Data delivery penting karena memungkinkan pertukaran informasi antara klien dan server. Ini membantu platform menjadi dinamis dengan menyediakan informasi real-time, mengelola permintaan pengguna, dan memberikan respons yang diperlukan. Tanpa data delivery, platform tidak bisa mengelola interaksi antara pengguna dan server secara efisien, dan tidak dapat berfungsi secara penuh.
 
@@ -79,6 +80,7 @@ Model di Django disebut sebagai **Object-Relational Mapping (ORM)** karena memun
 
 <details>
   <summary>Tugas 4</summary>
+
 ### 1. Apa perbedaan antara HttpResponseRedirect() dan redirect()?
 - HttpResponseRedirect() adalah class bawaan Django yang mengirimkan respons HTTP dengan kode status 302 untuk melakukan redirect. Kode ini membutuhkan URL lengkap yang harus diberikan sebagai argumen.
 
@@ -131,6 +133,7 @@ Setelah semuanya berfungsi dengan baik, saya memastikan semua perubahan di-commi
 
 <details>
   <summary>Tugas 5</summary>
+
 ### 1. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
 Urutan prioritas CSS selector diatur berdasarkan **specificity** sebagai berikut:
 
@@ -162,15 +165,18 @@ Kegunaannya: Flexbox digunakan untuk membuat layout yang mudah menyesuaikan ukur
 Kegunaannya: Grid layout sangat cocok untuk tata letak yang presisi dan detail, seperti pembuatan layout multi-kolom dengan konten yang beragam.
 
 ### 5. Implementasi Checklist secara Step-by-Step
--Langkah pertama, saya membuat fungsi untuk menghapus dan mengedit produk. Saya menambahkan dua tombol di setiap card produk (edit dan hapus). Fungsi ini memungkinkan pengguna menghapus atau mengedit produk yang ada di database.
-
--Langkah kedua, saya melakukan kustomisasi halaman login, register, dan tambah produk dengan menggunakan Tailwind CSS. Saya menambahkan elemen-elemen visual seperti background yang menarik, border pada form, dan warna-warna yang lebih menonjol agar tampilannya lebih user-friendly.
-
--Langkah ketiga, untuk halaman daftar produk, saya menggunakan Flexbox dan Grid Layout agar tampilannya lebih responsif. Saya juga menambahkan kondisi agar jika tidak ada produk yang terdaftar, akan muncul pesan dan gambar yang menunjukkan bahwa produk masih kosong.
-
--Langkah keempat, saya membuat navbar yang responsif. Navbar ini dapat berubah menjadi menu hamburger di tampilan mobile, dan berubah menjadi menu horizontal di tampilan desktop.
-
--Langkah kelima, setelah semua langkah di atas selesai, saya melakukan push ke GitHub untuk memastikan semua perubahan tersimpan dan dapat di-review.
+1. Saya menambahkan tailwind ke aplikasi.
+2. Menambahkan fitur "Edit" untuk edit item yang sudah di-add.
+3. Menambahkan fitur "Delete" untuk menghapus item yang sudah di-add.
+4. Menambahkan navbar dengan design awal yang hanya berisi button logout dan welcome user.
+5. Konfigurasi static files 
+6. Membuat sketch tampilan aplikasi rancangan saya melalui aplikasi canva.
+6. Menambahkan styles pada app dengan tailwind dan css. Pada tahap ini saya styling halaman login, regoster, home, create item entry, dan edit mood.
+7. Lalu, saya design navbar dengan beberapa button pilihan yaitu:
+-home : mengarah ke main.html
+-sale : mengarah ke sale.html
+-shop by categories : berisi dropdown skincare yang mengarah ke skincare.html dan makeup yang mengarah ke makeup.html
+8. Terakhir saya push ke github dan pws.
 
 </details>
 

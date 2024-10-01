@@ -25,6 +25,20 @@ def show_main(request):
     }
     return render(request, 'main.html', context)
 
+def sale_page(request):
+    context = {
+        'name': 'Safira Salma Humaira',  # You can add more context data here
+    }
+    return render(request, 'sale.html', context)
+
+# View untuk halaman Skincare
+def skincare_page(request):
+    return render(request, 'skincare.html')
+
+# View untuk halaman Makeup
+def makeup_page(request):
+    return render(request, 'makeup.html')
+
 def create_item_entry(request):
     form = ItemForm(request.POST or None)
     if form.is_valid() and request.method == "POST":
@@ -86,14 +100,10 @@ def logout_user(request):
     return response
 
 def edit_item(request, id):
-    # Get item entry berdasarkan id
     mood = Item.objects.get(pk = id)
-
-    # Set item entry sebagai instance dari form
     form = ItemForm(request.POST or None, instance=mood)
 
     if form.is_valid() and request.method == "POST":
-        # Simpan form dan kembali ke halaman awal
         form.save()
         return HttpResponseRedirect(reverse('main:show_main'))
 
@@ -101,9 +111,6 @@ def edit_item(request, id):
     return render(request, "edit_item.html", context)
 
 def delete_item(request, id):
-    # Get item berdasarkan id
     item = Item.objects.get(pk = id)
-    # Hapus item
     item.delete()
-    # Kembali ke halaman awal
     return HttpResponseRedirect(reverse('main:show_main'))

@@ -2,19 +2,15 @@
 
 Ini merupakan repository **Delicate**, sebuah aplikasi e-commerce yang dikembangkan untuk **Tugas Pemrograman Berbasis Platform**.
 
-[Tugas 2](#tugas-2)
+<details>
+  <summary>Tugas 2</summary>
 
-[Tugas 3](#tugas-3)
-
-[Tugas 4](#tugas-4)
-
-## TUGAS 2
 ## Deskripsi Proyek
 Aplikasi Delicate adalah aplikasi e-commerce yang menjual skincare dan makeup dan memungkinkan pengguna untuk melihat daftar produk dengan atribut **nama**, **harga**, dan **deskripsi**. Proyek ini dibuat dengan menggunakan framework Django dan mengimplementasikan konsep **Model-View-Template (MVT)**.
 
 ## Link Aplikasi
 Aplikasi yang sudah dideploy dapat diakses melalui tautan berikut:
-[Delicate - Aplikasi E-Commerce](http://safira-salma-delicate.pbp.cs.ui.ac.id/)
+[Delicate - Aplikasi E-Commerce](http://safira-salma-delicates.pbp.cs.ui.ac.id/)
 
 ## Implementasi Langkah-demi-Langkah
 Berikut adalah langkah-langkah yang saya lakukan untuk menyelesaikan checklist tugas ini:
@@ -47,10 +43,11 @@ Django dipilih sebagai framework untuk pembelajaran karena memiliki struktur yan
 ## Mengapa Model di Django Disebut ORM?
 Model di Django disebut sebagai **Object-Relational Mapping (ORM)** karena memungkinkan pengembang untuk berinteraksi dengan database menggunakan objek Python. Dengan ORM, kita tidak perlu menulis query SQL secara langsung, melainkan menggunakan metode yang lebih sederhana dan aman dalam bentuk query berbasis objek.
 
+</details>
 
 
-
-## TUGAS 3
+<details>
+  <summary>Tugas 3</summary>
 ### 1. Mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?
    Data delivery penting karena memungkinkan pertukaran informasi antara klien dan server. Ini membantu platform menjadi dinamis dengan menyediakan informasi real-time, mengelola permintaan pengguna, dan memberikan respons yang diperlukan. Tanpa data delivery, platform tidak bisa mengelola interaksi antara pengguna dan server secara efisien, dan tidak dapat berfungsi secara penuh.
 
@@ -77,10 +74,11 @@ Model di Django disebut sebagai **Object-Relational Mapping (ORM)** karena memun
 ![Postman XML](imagetugas3/Screenshot%20(831).png)
 ![Postman XML ID](imagetugas3/Screenshot%20(832).png)
 
- 
+ </details>
 
 
-### TUGAS 4
+<details>
+  <summary>Tugas 4</summary>
 ### 1. Apa perbedaan antara HttpResponseRedirect() dan redirect()?
 - HttpResponseRedirect() adalah class bawaan Django yang mengirimkan respons HTTP dengan kode status 302 untuk melakukan redirect. Kode ini membutuhkan URL lengkap yang harus diberikan sebagai argumen.
 
@@ -127,6 +125,54 @@ Saya menampilkan username pengguna yang login di halaman utama menggunakan reque
 
 5. Menyimpan dan Memastikan Push ke GitHub:
 Setelah semuanya berfungsi dengan baik, saya memastikan semua perubahan di-commit dan di-push ke GitHub sesuai dengan checklist.
+
+</details>
+
+
+<details>
+  <summary>Tugas 5</summary>
+### 1. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+Urutan prioritas CSS selector diatur berdasarkan **specificity** sebagai berikut:
+
+- **Inline styles** (misalnya: `style="color: red;"`) memiliki spesifisitas tertinggi.
+- **ID selectors** (misalnya: `#header`) memiliki spesifisitas lebih tinggi daripada class atau elemen.
+- **Class, attribute, atau pseudo-class selectors** (misalnya: `.container`, `[type="text"]`, `:hover`) memiliki spesifisitas lebih rendah dari ID.
+- **Element selectors** (misalnya: `div`, `p`) memiliki spesifisitas paling rendah.
+
+Jika ada beberapa aturan CSS yang memiliki spesifisitas yang sama, aturan yang ditulis terakhir akan diterapkan.
+
+### 2. Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web?
+Responsive design sangat penting karena pengguna mengakses aplikasi web dari berbagai perangkat dengan ukuran layar berbeda, mulai dari desktop hingga smartphone. Dengan responsive design, tampilan web dapat menyesuaikan ukuran layarnya, sehingga pengguna mendapatkan pengalaman yang optimal di semua perangkat.
+
+**Contoh aplikasi yang menerapkan responsive design**: Facebook, Twitter.
+**Contoh aplikasi yang belum menerapkan responsive design**: Beberapa situs web lama yang masih menggunakan layout fixed-width.
+
+### 3. Jelaskan perbedaan antara margin, border, dan padding!
+- **Margin**: Ruang di luar border yang memisahkan elemen dengan elemen lain.
+- **Border**: Garis yang mengelilingi konten elemen dan padding.
+- **Padding**: Ruang di dalam border yang memisahkan konten elemen dari border.
+
+### 4. Jelaskan Konsep Flexbox dan Grid Layout serta Kegunaannya
+- Flexbox: Flexbox adalah layout satu dimensi yang digunakan untuk menyusun elemen secara fleksibel dalam baris atau kolom. Flexbox sangat berguna untuk layout responsif yang dinamis, karena memudahkan pengaturan item dalam container dengan penyesuaian yang mudah, misalnya dengan menyusun item secara horizontal (baris) atau vertikal (kolom).
+
+Kegunaannya: Flexbox digunakan untuk membuat layout yang mudah menyesuaikan ukuran elemen dan container-nya, misalnya dalam menata card produk atau elemen navigasi.
+
+- Grid Layout: Grid layout adalah sistem layout dua dimensi yang memungkinkan pengaturan elemen dalam bentuk baris dan kolom. Ini sangat berguna untuk membuat layout yang lebih kompleks, seperti dashboard atau galeri gambar, karena kita bisa menentukan lebar kolom dan tinggi baris dengan mudah.
+
+Kegunaannya: Grid layout sangat cocok untuk tata letak yang presisi dan detail, seperti pembuatan layout multi-kolom dengan konten yang beragam.
+
+### 5. Implementasi Checklist secara Step-by-Step
+-Langkah pertama, saya membuat fungsi untuk menghapus dan mengedit produk. Saya menambahkan dua tombol di setiap card produk (edit dan hapus). Fungsi ini memungkinkan pengguna menghapus atau mengedit produk yang ada di database.
+
+-Langkah kedua, saya melakukan kustomisasi halaman login, register, dan tambah produk dengan menggunakan Tailwind CSS. Saya menambahkan elemen-elemen visual seperti background yang menarik, border pada form, dan warna-warna yang lebih menonjol agar tampilannya lebih user-friendly.
+
+-Langkah ketiga, untuk halaman daftar produk, saya menggunakan Flexbox dan Grid Layout agar tampilannya lebih responsif. Saya juga menambahkan kondisi agar jika tidak ada produk yang terdaftar, akan muncul pesan dan gambar yang menunjukkan bahwa produk masih kosong.
+
+-Langkah keempat, saya membuat navbar yang responsif. Navbar ini dapat berubah menjadi menu hamburger di tampilan mobile, dan berubah menjadi menu horizontal di tampilan desktop.
+
+-Langkah kelima, setelah semua langkah di atas selesai, saya melakukan push ke GitHub untuk memastikan semua perubahan tersimpan dan dapat di-review.
+
+</details>
 
 ## Author
 Nama: Safira Salma Humaira -

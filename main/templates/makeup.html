@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'navbar.html' %}
+
+<style>
+    body {
+        background-color: white;
+    }
+
+    /* Styles for the banner image */
+    .banner {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px; /* Jarak antara banner */
+    border-radius: 8px;
+    object-fit: cover;
+    }
+
+    /* Styles for the product display */
+    .product-display {
+        text-align: center;
+        margin-top: 50px; /* Jarak antara bagian atas dan produk */
+        margin-bottom: 80px; /* Menambahkan jarak di bawah produk */
+    }
+
+    .product-img {
+        width: 300px;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 16px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .product-card {
+        display: inline-block;
+        padding: 16px;
+        background-color: #ffebf0;
+        border-radius: 16px;
+        max-width: 350px;
+        text-align: center;
+        margin: 0 20px; /* Jarak horizontal antar produk */
+    }
+
+    .product-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #FF1A9C;
+    }
+
+    .product-price {
+        font-size: 1.5rem;
+        color: #FF1A9C;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .section-title {
+        margin-top: 80px; /* Jarak tambahan atas sebelum tulisan */
+        text-align: center;
+    }
+        /* Title and subtitle styles */
+        .title {
+        color: #FF1A9C;
+    }
+
+    .subtitle {
+        color: #FF1A9C;
+    }
+</style>
+
+<!-- Section Title -->
+<div class="container mx-auto px-4 py-8 mt-16 max-w-7xl">
+    <div class="flex justify-start items-center">
+      <h1 class="title text-5xl italic font-bold mb-4">delicate</h1>
+      <p class="subtitle text-lg font-bold ml-2">Cherish your delicate skin with love.</p>
+    </div>
+
+    <div class="container mx-auto px-4">
+        <img src="{% static 'css/image/banner_makeup.png' %}" class="banner" alt="Banner Delicate">
+    </div>
+
+<!-- Product Section (Tiga produk) -->
+<div class="product-display">
+    <!-- Moisturizer -->
+    <div class="product-card">
+        <img src="{% static 'css/image/liptint.jpeg' %}" class="product-img" alt="Moisturizer">
+        <p class="product-title">Lip Tint</p>
+        <p class="product-price">Rp400.000,00</p> <!-- Harga -->
+    </div>
+
+    <!-- Facial Wash -->
+    <div class="product-card">
+        <img src="{% static 'css/image/blush.jpeg' %}" class="product-img" alt="Facial Wash">
+        <p class="product-title">400.000,00</p>
+        <p class="product-price">Rp400.000,00</p> <!-- Harga -->
+    </div>
+
+{% endblock %}

@@ -3,11 +3,36 @@
 
 {% block content %}
 {% include 'navbar.html' %}
+  <h1>Welcome to Delicate - Home Page</h1>
 
 <style>
   body {
       background-color: white;
   }
+
+  /* Apply the animation to the product image */
+  .product-img {
+      animation: moveProduct 3s infinite ease-in-out;
+  }
+
+  /* Apply the animation to the product title and price */
+  .product-title, .product-title-price {
+      animation: moveTitlePrice 3s infinite ease-in-out;
+  }
+
+  /* General styles for the product card */
+  .product-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+
+  .product-img {
+      border-radius: 8px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
   /* Top part of the card with light pink background and product name for catalog */
   .card-top {
       background-color: #FF1A9C;
@@ -15,6 +40,7 @@
       border-top-left-radius: 8px;
       border-top-right-radius: 8px;
   }
+
   /* Product title with custom background and alignment for catalog */
   .product-title {
       background-color: #B12051;
@@ -24,12 +50,14 @@
       text-align: center;
       border-radius: 8px;
   }
+
   /* Adjusted product-title-price class for the price to display on a new line */
   .product-title-price {
       display: block;
       margin-top: 4px;
-      font-size: 0.875rem; /* Optional: adjust the font size if needed */
+      font-size: 0.875rem;
   }
+
   /* Bottom part of the card for the order section */
   .card-bottom {
       background-color: #ffb3de;
@@ -38,6 +66,7 @@
       border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;
   }
+
   /* Add new item button styles */
   .add-new-item-btn {
       background-color: #f7838d;
@@ -47,18 +76,22 @@
       padding: 12px 24px;
       border-radius: 8px;
   }
+
   /* Last login text */
   .last-login {
       font-weight: bold;
       color: #FF1A9C;
   }
+
   /* Title and subtitle styles */
   .title {
       color: #FF1A9C;
   }
+
   .subtitle {
       color: #FF1A9C;
   }
+
   /* Custom style for BEST SELLER OF THE MONTH badge */
   .best-seller-badge {
       background-color: #FF1A9C;
@@ -70,6 +103,15 @@
       left: 10px;
       font-size: 0.75rem;
   }
+
+  /* Styles for the banner image */
+  .banner {
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px; /* Jarak antara banner */
+      border-radius: 8px;
+      object-fit: cover;
+  }
 </style>
 
 <div class="container mx-auto px-4 py-8 mt-16 max-w-7xl">
@@ -78,39 +120,56 @@
     <p class="subtitle text-lg font-bold ml-2">Cherish your delicate skin with love.</p>
   </div>
 
-  <!-- Product image section -->
+  <!-- Banner Section -->
+  <div class="container mx-auto px-4">
+    <img src="{% static 'css/image/banner_delicate.png' %}" class="banner" alt="Banner Delicate">
+  </div>
+
+  <div class="container mx-auto px-4">
+    <img src="{% static 'css/image/banner_photoshoot.png' %}" class="banner" alt="Banner Photoshoot">
+  </div>
+
+  <div class="container mx-auto px-4">
+    <img src="{% static 'css/image/banner_sale50.png' %}" class="banner" alt="Banner Sale50">
+  </div>
+
+  <div class="container mx-auto px-4">
+    <img src="{% static 'css/image/banner_flashsale.png' %}" class="banner" alt="Banner Flashsale">
+  </div>
+
+  <!-- Product image section with animation -->
   <div class="flex justify-center items-center space-x-10 mb-6">
-    <div>
-      <img src="{% static 'css/image/serum.jpeg' %}" class="rounded-lg shadow-lg h-72 object-cover" alt="Serum">
+    <div class="product-card">
+      <img src="{% static 'css/image/serum.jpeg' %}" class="product-img h-72 object-cover" alt="Serum">
       <a href="#" class="product-title block mt-4">Serum
         <span class="product-title-price">Rp250.000,00</span>
       </a>
     </div>
 
-    <div>
-      <img src="{% static 'css/image/face_wash.jpeg' %}" class="rounded-lg shadow-lg h-72 object-cover" alt="Facial Wash">
+    <div class="product-card">
+      <img src="{% static 'css/image/face_wash.jpeg' %}" class="product-img h-72 object-cover" alt="Facial Wash">
       <a href="#" class="product-title block mt-4">Facial Wash
         <span class="product-title-price">Rp200.000,00</span>
       </a>
     </div>
 
-    <div>
-      <img src="{% static 'css/image/moisturizer.jpeg' %}" class="rounded-lg shadow-lg h-72 object-cover" alt="Moisturizer">
+    <div class="product-card">
+      <img src="{% static 'css/image/moisturizer.jpeg' %}" class="product-img h-72 object-cover" alt="Moisturizer">
       <a href="#" class="product-title block mt-4">Moisturizer
         <span class="product-title-price">Rp250.000,00</span>
       </a>
     </div>
 
-    <div class="relative">
-      <img src="{% static 'css/image/liptint.jpeg' %}" class="rounded-lg shadow-lg h-72 object-cover" alt="Lip Tint">
+    <div class="product-card relative">
+      <img src="{% static 'css/image/liptint.jpeg' %}" class="product-img h-72 object-cover" alt="Lip Tint">
       <div class="best-seller-badge">BEST SELLER OF THE MONTH!</div>
       <a href="#" class="product-title block mt-4">Lip Tint
         <span class="product-title-price">Rp400.000,00</span>
       </a>
     </div>
 
-    <div>
-      <img src="{% static 'css/image/blush.jpeg' %}" class="rounded-lg shadow-lg h-72 object-cover" alt="Blush">
+    <div class="product-card">
+      <img src="{% static 'css/image/blush.jpeg' %}" class="product-img h-72 object-cover" alt="Blush">
       <a href="#" class="product-title block mt-4">Blush
         <span class="product-title-price">Rp400.000,00</span>
       </a>

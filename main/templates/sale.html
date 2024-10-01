@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'navbar.html' %}
+
+<h1>Sale Page - Discover Your Beauty Deals!</h1>
+
+<style>
+    body {
+        background-color: white;
+    }
+    
+    /* Title and subtitle styles */
+    .title {
+        color: #FF1A9C;
+    }
+
+    .subtitle {
+        color: #FF1A9C;
+    }
+    /* Styles for the banner image */
+    .banner {
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px; /* Jarak antara banner */
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+    /* Styles for the product display */
+    .product-display {
+        text-align: center;
+        margin-top: 50px; /* Jarak antara banner dan produk */
+        margin-bottom: 80px; /* Menambahkan jarak bawah di bawah produk */
+    }
+
+    .product-img {
+        width: 300px;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 16px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .product-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #FF1A9C;
+    }
+
+    .product-old-price {
+        font-size: 1.25rem;
+        color: grey;
+        text-decoration: line-through; /* Membuat harga lama dicoret */
+        margin-top: 5px;
+    }
+
+    .product-new-price {
+        font-size: 1.5rem;
+        color: #FF1A9C;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    /* Mengatur jarak antar produk */
+    .product-card {
+        display: inline-block;
+        padding: 16px;
+        background-color: #ffebf0;
+        border-radius: 16px;
+        max-width: 350px;
+        text-align: center;
+        margin: 0 20px; /* Jarak horizontal antar produk */
+    }
+
+    /* Alternatif: jika ingin jarak antar produk secara vertikal */
+    .product-display-vertical {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+
+<!-- Banner Section -->
+<div class="container mx-auto px-4 py-8 mt-16 max-w-7xl">
+    <div class="flex justify-start items-center">
+      <h1 class="title text-5xl italic font-bold mb-4">delicate</h1>
+      <p class="subtitle text-lg font-bold ml-2">Cherish your delicate skin with love.</p>
+    </div>
+
+  <div class="container mx-auto px-4">
+    <img src="{% static 'css/image/banner_delicate.png' %}" class="banner" alt="Banner Delicate">
+  </div>
+
+  <div class="container mx-auto px-4">
+    <img src="{% static 'css/image/banner_sale50.png' %}" class="banner" alt="Banner Sale50">
+  </div>
+</div>
+
+<!-- Product Section (Dua produk) -->
+<div class="product-display">
+  <!-- Lip Tint -->
+  <div class="product-card">
+    <img src="{% static 'css/image/liptint.jpeg' %}" class="product-img" alt="Lip Tint">
+    <p class="product-title">Lip Tint</p>
+    <p class="product-old-price">Rp400.000,00</p> <!-- Harga Lama yang Dicoret -->
+    <p class="product-new-price">Rp200.000,00</p> <!-- Harga Baru -->
+  </div>
+
+  <!-- Moisturizer -->
+  <div class="product-card">
+    <img src="{% static 'css/image/moisturizer.jpeg' %}" class="product-img" alt="Moisturizer">
+    <p class="product-title">Moisturizer</p>
+    <p class="product-old-price">Rp300.000,00</p> <!-- Harga Lama yang Dicoret -->
+    <p class="product-new-price">Rp150.000,00</p> <!-- Harga Baru -->
+  </div>
+</div>
+
+{% endblock %}

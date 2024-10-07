@@ -1,6 +1,6 @@
-# Delicate - Skincare and Make Up
+# Delicate - Skincare and Makeup
 
-Ini merupakan repository **Delicate**, sebuah aplikasi e-commerce yang dikembangkan untuk **Tugas Pemrograman Berbasis Platform**.
+Repository GitHub ini merupakan representasi dari **Delicate**, sebuah platform e-commerce yang dibuat sebagai bagian dari **Tugas Pemrograman Berbasis Platform**.
 
 <details>
   <summary>Tugas 2</summary>
@@ -242,13 +242,17 @@ Dengan membersihkan data di backend, kita dapat memastikan bahwa data yang masuk
   - **Membersihkan Data dengan DOMPurify**
     DOMPurify digunakan di frontend untuk membersihkan data sebelum ditampilkan, sehingga data yang mungkin terinfeksi dapat dihilangkan sebelum ditampilkan di halaman web.
 
-  - **Add, Commit, dan Push**
-    Langkah terakhir, saya menyimpan perubahan untuk update terbaru saya pada github dan pws.
+- **Add, Commit, dan Push**
+   Langkah terakhir, saya menyimpan perubahan untuk update terbaru saya pada github dan pws.
 </details>
 
 
 ## Author
 Nama: Safira Salma Humaira -
+
+
 NPM: 2306245850 -
+
+
 Kelas: PBP F
 

@@ -171,7 +171,7 @@ Kegunaannya: Grid layout sangat cocok untuk tata letak yang presisi dan detail, 
 4. Menambahkan navbar dengan design awal yang hanya berisi button logout dan welcome user.
 5. Konfigurasi static files 
 6. Membuat sketch tampilan aplikasi rancangan saya melalui aplikasi canva.
-6. Menambahkan styles pada app dengan tailwind dan css. Pada tahap ini saya styling halaman login, regoster, home, create item entry, dan edit mood.
+6. Menambahkan styles pada app dengan tailwind dan css. Pada tahap ini saya styling halaman login, regoster, home, create item entry, dan edit item.
 7. Lalu, saya design navbar dengan beberapa button pilihan yaitu:
 -home : mengarah ke main.html
 -sale : mengarah ke sale.html
@@ -179,6 +179,73 @@ Kegunaannya: Grid layout sangat cocok untuk tata letak yang presisi dan detail, 
 8. Terakhir saya push ke github dan pws.
 
 </details>
+
+
+
+<details>
+  <summary>Tugas 6</summary>
+
+## Tugas 6
+
+### 1. Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!
+JavaScript memiliki banyak manfaat dalam pengembangan aplikasi web, antara lain:
+
+- **Interaktivitas**: Menambahkan fitur interaktif dan dinamis pada halaman web, seperti tombol, dropdown, dan modal tanpa reload halaman.
+- **Pengalaman Pengguna yang Lebih Baik**: Fitur seperti validasi form real-time dan auto-complete meningkatkan UX.
+- **Asynchronous Request (AJAX)**: Memungkinkan pengambilan data dari server tanpa reload halaman, membuat aplikasi lebih cepat dan responsif.
+- **Manipulasi DOM**: JavaScript dapat memodifikasi elemen di halaman web secara dinamis berdasarkan interaksi pengguna atau data dari server.
+- **Integrasi API**: Memudahkan integrasi API eksternal seperti Google Maps, layanan cuaca, atau data lainnya yang dapat ditampilkan di halaman web.
+
+### 2. Jelaskan fungsi dari penggunaan await ketika kita menggunakan fetch()! Apa yang akan terjadi jika kita tidak menggunakan await?
+Ketika menggunakan `fetch()` untuk mengambil data dari server, `await` digunakan agar kode menunggu hingga operasi asinkron selesai. Dengan menggunakan `await`, kita memastikan bahwa data yang diambil dari server sudah siap sebelum diproses lebih lanjut. Tanpa `await`, `fetch()` akan mengembalikan Promise, yang berarti proses pengambilan data akan berjalan di latar belakang, dan kode setelahnya akan tetap dieksekusi. Ini bisa menyebabkan error karena data mungkin belum tersedia saat digunakan.
+
+Jika kita tidak menggunakan `await`, hasil dari `fetch()` tidak akan segera dapat digunakan karena pengambilan data dari server mungkin belum selesai. Hal ini dapat menyebabkan error atau masalah dalam penggunaan data yang belum siap.
+
+### 3. Mengapa kita perlu menggunakan decorator csrf_exempt pada view yang akan digunakan untuk AJAX POST?
+Decorator `csrf_exempt` digunakan untuk menonaktifkan perlindungan CSRF (Cross-Site Request Forgery) pada suatu view tertentu. Pada umumnya, Django menerapkan perlindungan CSRF untuk setiap permintaan POST sebagai langkah keamanan tambahan. Namun, untuk view yang digunakan dalam permintaan AJAX POST, terkadang mekanisme CSRF ini perlu dinonaktifkan (menggunakan `csrf_exempt`) agar permintaan POST dari AJAX dapat diterima tanpa mengalami masalah.
+
+Jika `csrf_exempt` tidak digunakan pada view AJAX POST, permintaan yang dikirimkan oleh AJAX dapat ditolak karena Django akan menganggapnya sebagai permintaan yang tidak sah, terutama jika permintaan tersebut tidak menyertakan token CSRF yang valid. Namun, penting untuk memastikan bahwa view tetap aman dari potensi serangan jika CSRF diabaikan.
+
+## 4. Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?
+Pembersihan data input pengguna dilakukan di backend karena backend merupakan lapisan yang memberikan kontrol penuh atas semua data yang masuk sebelum data tersebut diproses atau disimpan. Jika hanya dilakukan di frontend, pengguna yang tidak bertanggung jawab bisa dengan mudah memodifikasi atau melewati pembersihan data yang dilakukan di sisi frontend dengan memodifikasi kode atau mengirimkan permintaan langsung ke server.
+
+Dengan membersihkan data di backend, kita dapat memastikan bahwa data yang masuk ke sistem benar-benar aman dan bebas dari potensi serangan, seperti injection atau XSS (Cross-Site Scripting), karena backend tidak dapat dimanipulasi oleh pengguna seperti frontend. Oleh karena itu, meskipun pembersihan juga dapat dilakukan di frontend, melakukan pembersihan di backend adalah langkah keamanan yang sangat penting.
+
+### 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+- **Menambahkan Error Message Pada Login**
+  Tahap ini berfokus pada cara menampilkan pesan kesalahan ketika terjadi masalah saat proses login. Jika login gagal, pengguna akan diberi umpan balik berupa pesan error untuk memperbaiki input mereka.
+
+- **Membuat Fungsi untuk Menambahkan Item dengan AJAX**
+  Pada tahap ini, kita membuat fungsi untuk menambahkan entri item. Pengguna dapat menambahkan item baru tanpa perlu me-refresh halaman dengan menggunakan AJAX. Data yang dikirim ke server akan diproses secara asinkron.
+
+- **Menambahkan Routing untuk Fungsi `add_item_entry_ajax`**
+  Tahap ini melibatkan penambahan routing untuk fungsi `add_item_entry_ajax`. Routing ini memungkinkan fungsi tersebut dapat diakses melalui URL tertentu di aplikasi, sehingga aplikasi dapat menerima dan memproses data yang dikirim oleh pengguna.
+
+- **Menampilkan Data Item Entry dengan `fetch()` API**
+  Pada tahap ini, data item yang sudah tersimpan diambil dari server menggunakan `fetch()` API untuk ditampilkan kembali ke pengguna tanpa perlu me-refresh halaman.
+
+- **Membuat Modal Sebagai Form untuk Menambahkan Item**
+  Pada tahap ini, modal dibuat sebagai form input agar pengguna dapat menambahkan entri item baru secara dinamis melalui tampilan yang lebih interaktif.
+
+- **Menambahkan Data Item dengan AJAX**
+  Pada tahap ini, data item yang ditambahkan pengguna dikirimkan ke server menggunakan AJAX. Hal ini memungkinkan halaman tidak perlu di-reload setelah item ditambahkan.
+
+- **Melindungi Aplikasi dari Cross Site Scripting (XSS)**
+  Pada tahap ini, aplikasi dilindungi dari serangan XSS melalui berbagai cara, baik di frontend maupun di backend.
+  
+  - **Mencoba XSS**
+    Pengujian dilakukan dengan mencoba menyisipkan skrip XSS untuk melihat apakah aplikasi rentan terhadap serangan ini.
+
+  - **Menambahkan `strip_tags` untuk Membersihkan Data Baru**
+    Fungsi `strip_tags` ditambahkan di backend untuk memastikan bahwa data baru yang diinputkan oleh pengguna tidak mengandung tag HTML berbahaya.
+
+  - **Membersihkan Data dengan DOMPurify**
+    DOMPurify digunakan di frontend untuk membersihkan data sebelum ditampilkan, sehingga data yang mungkin terinfeksi dapat dihilangkan sebelum ditampilkan di halaman web.
+
+  - **Add, Commit, dan Push**
+    Langkah terakhir, saya menyimpan perubahan untuk update terbaru saya pada github dan pws.
+</details>
+
 
 ## Author
 Nama: Safira Salma Humaira -

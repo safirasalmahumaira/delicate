@@ -248,10 +248,10 @@ Dengan membersihkan data di backend, kita dapat memastikan bahwa data yang masuk
 
 
 ## Author
-Nama: Safira Salma Humaira -
+Nama: Safira Salma Humaira 
 
 
-NPM: 2306245850 -
+NPM: 2306245850 
 
 
 Kelas: PBP F

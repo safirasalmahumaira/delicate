@@ -23,7 +23,7 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('login/', login_user, name='login'),
     path('logout/', logout_user, name='logout'),
-    path('edit-mood/<uuid:id>', edit_item, name='edit_item'),
+    path('edit-item/<uuid:id>', edit_item, name='edit_item'),
     path('delete/<uuid:id>', delete_item, name='delete_item'),
     path('create-mood-entry-ajax', add_item_entry_ajax, name='add_item_entry_ajax'),
 ]

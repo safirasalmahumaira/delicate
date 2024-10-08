@@ -127,7 +127,7 @@ def add_item_entry_ajax(request):
     description = strip_tags(request.POST.get("description")) # strip HTML tags!
     user = request.user
 
-    new_item = ItemEntry(
+    new_item = Item(
         name=name, price=price,
         description=description,
         user=user

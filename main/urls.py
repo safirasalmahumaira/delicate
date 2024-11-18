@@ -7,6 +7,8 @@ from main.views import logout_user
 from main.views import edit_item
 from main.views import delete_item
 from main.views import add_item_entry_ajax
+from main.views import create_item_flutter
+
 
 app_name = 'main'  # Gunakan namespace 'main'
 
@@ -26,4 +28,5 @@ urlpatterns = [
     path('edit-item/<uuid:id>', edit_item, name='edit_item'),
     path('delete/<uuid:id>', delete_item, name='delete_item'),
     path('create-item-entry-ajax', add_item_entry_ajax, name='add_item_entry_ajax'),
+    path('create-flutter/', create_item_flutter, name='create_item_flutter'),
 ]
